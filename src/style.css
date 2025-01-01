@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --app-bg: #1a2847;
+  --nav-bg: #1e2c44;
+}
+
+.router-link-active {
+  @apply text-white;
+}
