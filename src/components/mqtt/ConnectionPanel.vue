@@ -52,9 +52,10 @@
       />
     </div>
 
-    <ConnectionStatus />
+    <!-- Remove the Status box -->
+    <!-- <ConnectionStatus /> -->
     
-    <div class="flex justify-between">
+    <div class="flex justify-center">
       <div class="relative">
         <button 
           type="button"
@@ -70,13 +71,6 @@
           Settings saved successfully!
         </div>
       </div>
-      <button 
-        type="submit"
-        class="bg-white text-[#1a2847] py-3 px-8 rounded-lg font-medium hover:bg-white/90 transition-colors disabled:opacity-50"
-        :disabled="isConnecting"
-      >
-        {{ isConnected ? 'Disconnect' : 'Connect' }}
-      </button>
     </div>
   </form>
 </template>
@@ -86,7 +80,6 @@ import { ref, computed } from 'vue'
 import { MQTT_CONFIG } from '@/config/mqtt'
 import { useMqttStore } from '@/stores/mqttStore'
 import { useConnectionStore } from '@/stores/connectionStore'
-import ConnectionStatus from './ConnectionStatus.vue'
 import { ref as vueRef } from 'vue'
 
 const mqtt = useMqttStore()

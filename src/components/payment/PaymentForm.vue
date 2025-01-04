@@ -13,7 +13,7 @@
         @click="selectCard(card)"
       >
         <div>
-          <div class="text-white">{{ card.cardNumber }}</div>
+          <div class="text-white">{{ formatCardNumber(card.cardNumber) }}</div>
           <div class="text-sm text-white/60">{{ card.cardholderName }}</div>
         </div>
         <button 
@@ -49,7 +49,7 @@
           maxlength="19"
           class="w-full bg-white/10 text-white p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/20"
           placeholder="1234 5678 9012 3456"
-          @input="formatCardNumber"
+          @input="formatCardNumberInput"
           required
         />
         <p v-if="errors.cardNumber" class="text-red-400 text-sm mt-1">{{ errors.cardNumber }}</p>
@@ -143,12 +143,17 @@ const getButtonText = computed(() => {
   return `Pay ${props.amount}`
 })
 
-const formatCardNumber = () => {
+const formatCardNumberInput = () => {
   // Remove non-digits
   let value = form.value.cardNumber.replace(/\D/g, '')
   // Add space after every 4 digits
   value = value.replace(/(\d{4})(?=\d)/g, '$1 ')
   form.value.cardNumber = value
+}
+
+const formatCardNumber = (cardNumber) => {
+  // Ensure the card number is masked properly
+  return maskCardNumber(cardNumber)
 }
 
 const formatExpiry = () => {
