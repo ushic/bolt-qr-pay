@@ -7,6 +7,10 @@
   --nav-bg: #1e2c44;
 }
 
+body {
+  font-family: 'Vazirmatn', sans-serif;
+}
+
 .router-link-active {
   @apply text-white;
 }

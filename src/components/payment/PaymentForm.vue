@@ -2,7 +2,7 @@
   <div class="space-y-4">
     <!-- Saved Cards -->
     <div v-if="savedCards.length > 0" class="space-y-2">
-      <label class="block text-white/80 text-sm mb-2">Select a Card</label>
+      <label class="block text-white/80 text-sm mb-2">انتخاب کارت</label>
       <div 
         v-for="card in savedCards" 
         :key="card.id"
@@ -13,7 +13,7 @@
         @click="selectCard(card)"
       >
         <div>
-          <div class="text-white">{{ card.cardNumber }}</div>
+          <div class="text-white" dir="ltr">{{ card.cardNumber }}</div>
           <div class="text-sm text-white/60">{{ card.cardholderName }}</div>
         </div>
         <button 
@@ -33,7 +33,7 @@
             @click="startNewCard"
             class="bg-[#1a2847] px-4 text-sm text-white/60 hover:text-white"
           >
-            Add New Card
+            افزودن کارت جدید
           </button>
         </div>
       </div>
@@ -42,7 +42,7 @@
     <form @submit.prevent="handleSubmit" class="space-y-4">
       <div v-if="savedCards.length === 0 || showNewCardForm">
       <div>
-        <label class="block text-white/80 text-sm mb-2">Card Number</label>
+        <label class="block text-white/80 text-sm mb-2">شماره کارت</label>
         <input 
           v-model="form.cardNumber"
           type="text"
@@ -56,7 +56,7 @@
       </div>
 
       <div>
-        <label class="block text-white/80 text-sm mb-2">Cardholder Name</label>
+        <label class="block text-white/80 text-sm mb-2">نام دارنده کارت</label>
         <input 
           v-model="form.cardholderName"
           type="text"
@@ -69,7 +69,7 @@
 
       <div class="grid grid-cols-2 gap-4">
         <div>
-          <label class="block text-white/80 text-sm mb-2">Expiration Date</label>
+          <label class="block text-white/80 text-sm mb-2">تاریخ انقضاء</label>
           <input 
             v-model="form.expiry"
             type="text"
@@ -114,6 +114,10 @@ import { useCardStore } from '@/stores/cardStore'
 import { Icons } from '@/components/icons'
 import { maskCardNumber } from '@/utils/card'
 
+const formatNumber = (num) => {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
+
 const props = defineProps({
   amount: {
     type: Number,
@@ -138,9 +142,9 @@ const form = ref({
 const errors = ref({})
 
 const getButtonText = computed(() => {
-  if (isProcessing.value) return 'Processing...'
-  if (selectedCard.value) return `Pay ${props.amount}`
-  return `Pay ${props.amount}`
+  if (isProcessing.value) return 'در حال پردازش'
+  if (selectedCard.value) return `پرداخت ${formatNumber(props.amount)} تومان`
+  return `پرداخت ${formatNumber(props.amount)} تومان`
 })
 
 const formatCardNumber = () => {

@@ -45,19 +45,19 @@
     <template v-else-if="parsedData">
       <!-- Payment details -->
       <div class="grid grid-cols-2 gap-2 text-sm">
-        <div class="text-white/60">Serial Number:</div>
+        <div class="text-white/60">سریال دستگاه:</div>
         <div class="text-white text-right">{{ parsedData.serialNumber }}</div>
         
-        <div class="text-white/60">Amount:</div>
-        <div class="text-white text-right">{{ parsedData.amount }}</div>
+        <div class="text-white/60">مبلغ (تومان):</div>
+        <div class="text-white text-right">{{ formatNumber(parsedData.amount) }}</div>
         
-        <div class="text-white/60">Date:</div>
+        <div class="text-white/60">تاریخ:</div>
         <div class="text-white text-right">{{ parsedData.date }}</div>
         
-        <div class="text-white/60">Time:</div>
+        <div class="text-white/60">زمان:</div>
         <div class="text-white text-right">{{ parsedData.time }}</div>
         
-        <div class="text-white/60">Merchant:</div>
+        <div class="text-white/60">فروشگاه:</div>
         <div class="text-white text-right">{{ parsedData.merchantName }}</div>
       </div>
       
@@ -67,7 +67,7 @@
           @click="showPaymentForm = true"
           class="w-full bg-white text-[#1a2847] py-3 px-8 rounded-lg font-medium hover:bg-white/90 transition-colors"
         >
-          Pay {{ parsedData.amount }}
+          پرداخت {{ formatNumber(parsedData.amount) }} تومان
         </button>
       </div>
       
@@ -96,6 +96,10 @@ import { formatPaymentData } from '@/utils/payment'
 import { useRegistration } from '@/composables/useRegistration'
 import { useMqttConnection } from '@/composables/useMqttConnection'
 import { useMqttStore } from '@/stores/mqttStore'
+
+const formatNumber = (num) => {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
 
 const props = defineProps({
   code: {
@@ -170,7 +174,7 @@ const handlePaymentSuccess = async (cardData) => {
       2 // Use QoS 2 for payments
     )
     
-    setStatus('success', 'Payment processed successfully!')
+    setStatus('success', 'پرداخت با موفقیت انجام شد')
   } catch (error) {
     console.error('Payment publish error:', error)
     setStatus('error', error.message)

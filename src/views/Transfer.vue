@@ -2,7 +2,7 @@
   <div class="min-h-screen p-4">
     <StatusBar />
     <div class="max-w-md mx-auto">
-      <h1 class="text-2xl text-white font-bold mb-6">QR Code History</h1>
+      <h1 class="text-2xl text-white font-bold mb-6">جزئیات پرداخت</h1>
       <QrCodeList />
     </div>
   </div>
