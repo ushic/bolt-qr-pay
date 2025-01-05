@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --app-bg: #1a2847;
-  --nav-bg: #1e2c44;
+  --app-bg: #4d82dc;
+  --nav-bg: #4d82dc;
 }
 
 body {

@@ -4,7 +4,7 @@
       <component :is="Icons.Help" class="h-6 w-6" />
     </button>
     <div class="flex items-center gap-2">
-      <component :is="Icons.Signal" class="h-4 w-4 text-white" />
+      <img src="/logo.svg" alt="Logo" class="h-[100px] w-[100px] text-white" />
     </div>
   </div>
 </template>

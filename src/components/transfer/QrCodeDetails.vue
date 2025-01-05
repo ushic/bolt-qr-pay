@@ -174,7 +174,7 @@ const handlePaymentSuccess = async (cardData) => {
       2 // Use QoS 2 for payments
     )
     
-    setStatus('success', 'پرداخت با موفقیت انجام شد')
+    setStatus('success', 'Payment processed successfully!')
   } catch (error) {
     console.error('Payment publish error:', error)
     setStatus('error', error.message)

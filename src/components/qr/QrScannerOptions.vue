@@ -19,7 +19,7 @@
         class="flex items-center justify-center gap-2 bg-white/10 text-white py-3 px-4 rounded-lg hover:bg-white/20 transition-colors text-right font-vazir"
       >
         <span>پرداخت با QR</span>
-        <component :is="Icons.CreditCard" class="w-5 h-5" />
+        <component :is="Icons.CreditCard" class="w-5 h-5 text-orange-400" />
       </button>
     </div>
   </div>

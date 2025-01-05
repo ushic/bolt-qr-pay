@@ -1,11 +1,11 @@
 <template>
-  <nav class="fixed bottom-0 left-0 right-0 bg-[#1e2c44] p-4">
+  <nav class="fixed bottom-0 left-0 right-0 bg-white p-4 shadow-lg">
     <div class="flex justify-between items-center max-w-md mx-auto">
       <router-link 
         v-for="(item, index) in navigationItems" 
         :key="index"
         :to="item.path" 
-        class="text-gray-400 hover:text-white"
+        class="text-gray-700 hover:text-blue-600 transition-colors"
       >
         <component :is="item.icon" class="h-6 w-6" />
       </router-link>
@@ -31,6 +31,6 @@ nav {
 }
 
 .router-link-active {
-  @apply text-white;
+  @apply text-blue-600;
 }
 </style>
