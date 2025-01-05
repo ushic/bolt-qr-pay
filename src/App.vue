@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-[#1a2847]">
+  <div class="min-h-screen bg-[#1a2847]" dir="rtl">
     <router-view />
     <Navigation />
   </div>

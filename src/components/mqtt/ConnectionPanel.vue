@@ -1,7 +1,9 @@
 <template>
-  <form @submit.prevent="handleConnect" class="space-y-4">
+  <form @submit.prevent="handleConnect" class="space-y-4 font-vazir">
     <div>
-      <label class="block text-white/80 text-sm mb-2">Broker Host</label>
+      <label class="block text-white/80 text-sm mb-2">
+        آدرس سرور<span class="text-red-500">*</span>
+      </label>
       <input 
         v-model="form.host"
         type="text"
@@ -12,7 +14,9 @@
     </div>
 
     <div>
-      <label class="block text-white/80 text-sm mb-2">Port</label>
+      <label class="block text-white/80 text-sm mb-2">
+        پورت<span class="text-red-500">*</span>
+      </label>
       <input 
         v-model="form.port"
         type="number"
@@ -23,7 +27,7 @@
     </div>
 
     <div>
-      <label class="block text-white/80 text-sm mb-2">Client ID (Optional)</label>
+      <label class="block text-white/80 text-sm mb-2">شناسه کلاینت</label>
       <input 
         v-model="form.clientId"
         type="text"
@@ -33,7 +37,7 @@
     </div>
 
     <div>
-      <label class="block text-white/80 text-sm mb-2">Username</label>
+      <label class="block text-white/80 text-sm mb-2">نام کاربری</label>
       <input 
         v-model="form.username"
         type="text"
@@ -43,7 +47,7 @@
     </div>
 
     <div>
-      <label class="block text-white/80 text-sm mb-2">Password</label>
+      <label class="block text-white/80 text-sm mb-2">کلمه عبور</label>
       <input 
         v-model="form.password"
         type="password"
@@ -52,9 +56,6 @@
       />
     </div>
 
-    <!-- Remove the Status box -->
-    <!-- <ConnectionStatus /> -->
-    
     <div class="flex justify-center">
       <div class="relative">
         <button 
@@ -62,13 +63,13 @@
           @click="handleSave"
           class="bg-white/10 text-white py-3 px-8 rounded-lg font-medium hover:bg-white/20 transition-colors"
         >
-          Save
+          ذخیره
         </button>
         <div 
           v-if="showSaveMessage"
           class="save-message absolute left-0 -top-10 bg-green-500/90 text-white px-4 py-2 rounded-lg text-sm whitespace-nowrap"
         >
-          Settings saved successfully!
+          تنظیمات با موفقیت ذخیره شد!
         </div>
       </div>
     </div>
@@ -141,5 +142,9 @@ const handleSave = () => {
   0% { opacity: 1; }
   70% { opacity: 1; }
   100% { opacity: 0; }
+}
+
+.font-vazir {
+  font-family: 'Vazirmatn', sans-serif;
 }
 </style>

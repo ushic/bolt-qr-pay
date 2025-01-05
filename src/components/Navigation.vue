@@ -17,9 +17,20 @@
 import { Icons } from '@/components/icons'
 
 const navigationItems = [
-  { path: '/connection', icon: Icons.Wifi },
-  { path: '/', icon: Icons.Grid },
+  { path: '/menu', icon: Icons.Home },
   { path: '/transfer', icon: Icons.Transfer },
-  { path: '/menu', icon: Icons.Home }
+  { path: '/', icon: Icons.Grid },
+  { path: '/connection', icon: Icons.Wifi }
 ]
 </script>
+
+<style scoped>
+/* Add RTL support for navigation */
+nav {
+  direction: rtl;
+}
+
+.router-link-active {
+  @apply text-white;
+}
+</style>

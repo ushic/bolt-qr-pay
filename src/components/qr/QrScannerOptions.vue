@@ -16,10 +16,10 @@
     <div class="flex flex-col gap-4 w-full max-w-xs">
       <button 
         @click="$emit('camera-click')"
-        class="flex items-center justify-center gap-2 bg-white/10 text-white py-3 px-4 rounded-lg hover:bg-white/20 transition-colors"
+        class="flex items-center justify-center gap-2 bg-white/10 text-white py-3 px-4 rounded-lg hover:bg-white/20 transition-colors text-right font-vazir"
       >
+        <span>پرداخت با QR</span>
         <component :is="Icons.CreditCard" class="w-5 h-5" />
-        Scan to Pay
       </button>
     </div>
   </div>
@@ -30,3 +30,15 @@ import { Icons } from '@/components/icons'
 
 defineEmits(['camera-click'])
 </script>
+
+<style scoped>
+/* Add Vazirmatn font class */
+.font-vazir {
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+/* Reverse flex direction for RTL */
+button {
+  flex-direction: row-reverse;
+}
+</style>
